@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>flash bomb</title>
+</head>
+<body>
+<h2 id="info" style="position: fixed; top: 40%; left: 50%;transform:translate(-50%,-50%);text-align:center;">Click anywhere to start or stop</h2>
+<script>
+let startInterval;
+let isPlaying = false;
+function changeColor() {
+const color = "#" + Math.round(Math.random()*0xffffff).toString(16);
+document.body.style.backgroundColor=color;
+}
+
+function init() {
+if(isPlaying) {
+isPlaying = false;
+clearInterval(startInterval);
+document.body.style.backgroundColor = "white";
+return;
+};
+isPlaying = true;
+startInterval = setInterval(changeColor,1);
+}
+document.addEventListener("click",e => {
+init();
+})
+</script>
+</body>
+</html>
